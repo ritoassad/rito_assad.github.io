@@ -1,1 +1,132 @@
+const styles = `
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #333;
+        color: white;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #111;
+        color: #f5a623;
+        text-align: center;
+        padding: 20px;
+        font-family: 'Georgia', serif;
+    }
+    h1 {
+        font-size: 3em;
+    }
+    h2 {
+        font-family: 'Verdana', sans-serif;
+        color: #ffcc00;
+        text-decoration: underline;
+    }
+    .content {
+        margin: 20px;
+        font-size: 18px;
+    }
+    .game-section {
+        margin-bottom: 30px;
+        padding: 20px;
+        background-color: #444;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    }
+    .game-section h3 {
+        color: #ff6600;
+        font-family: 'Georgia', serif;
+        text-transform: uppercase;
+    }
+    .game-section p {
+        font-family: 'Verdana', sans-serif;
+        line-height: 1.6;
+    }
+    .game-section img {
+        width: 100%;
+        max-width: 600px;
+        margin: 20px 0;
+        border-radius: 10px;
+    }
+    .tips-section ul {
+        list-style-type: disc;
+        margin-left: 20px;
+    }
+    .footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #222;
+        color: white;
+        font-family: 'Arial', sans-serif;
+    }
+    a {
+        color: #ffcc00;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #f5a623;
+    }
+`;
+
+const styleSheet = document.createElement("style");
+styleSheet.type = "text/css";
+styleSheet.innerText = styles;
+document.head.appendChild(styleSheet);
+
+const body = document.body;
+body.innerHTML = `
+    <header>
+        <h1>🎮 Reseñas Extendidas de Videojuegos</h1>
+        <p>Explora las sagas más épicas de los videojuegos y aprende sus secretos, historias y consejos.</p>
+    </header>
+    <div class="content">
+        ${createGameSection(
+            "Assassin's Creed",
+            "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Assassin%27s_Creed_Logo.svg/1280px-Assassin%27s_Creed_Logo.svg.png",
+            "Ubisoft",
+            "13 de noviembre de 2007",
+            "La saga comienza en el periodo de las Cruzadas con Altaïr Ibn-La'Ahad y continúa en diversas épocas históricas, como la Italia del Renacimiento con Ezio Auditore, la Revolución Americana con Connor Kenway, entre otros.",
+            ["Altaïr Ibn-La'Ahad", "Ezio Auditore", "Connor Kenway", "Edward Kenway", "Bayek de Siwa"],
+            "La franquicia ha generado más de 10 mil millones de dólares, convirtiéndose en una de las más exitosas de Ubisoft.",
+            "Obtener el 100% de sincronización en todas las misiones y coleccionables del juego.",
+            ["Explora bien el mapa para encontrar objetos secretos y mejorar tus habilidades.", "Enfréntate a los enemigos con sigilo para evitar batallas innecesarias."],
+            ["Para completar al 100%, no dejes de hacer misiones secundarias y encuentra todos los cofres y artefactos ocultos.", "En los combates, aprende a utilizar el sistema de contrataques para derrotar a los enemigos más rápido."]
+        )}
+        ${createGameSection(
+            "Red Dead Redemption",
+            "https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption.jpg",
+            "Rockstar Games",
+            "18 de mayo de 2010",
+            "La trama sigue a John Marston, un excriminal, quien es forzado a cazar a su antigua banda para salvar a su familia en el Lejano Oeste de Estados Unidos. Su secuela, Red Dead Redemption 2, se sitúa años antes de la historia original, centrada en la banda de Dutch Van der Linde.",
+            ["John Marston", "Arthur Morgan", "Dutch Van der Linde"],
+            "Red Dead Redemption 2 superó los 725 millones de dólares en su primer fin de semana de lanzamiento.",
+            "Encontrar todos los animales en el juego y completar las misiones más difíciles de caza y combate.",
+            ["Asegúrate de realizar misiones de historia para desbloquear nuevas habilidades y armas.", "Viaja a caballo para moverte rápidamente entre los vastos paisajes del juego."],
+            ["Busca secretos ocultos en el mapa, como el mito de 'Bigfoot' o el 'tesoro perdido'.", "Mejora tu puntería y aprende a usar la cobertura durante los tiroteos."]
+        )}
+    </div>
+    <footer class="footer">
+        <p>Desarrollado por tu nombre | <a href="https://www.ubisoft.com">Ubisoft</a> | <a href="https://www.rockstargames.com">Rockstar Games</a></p>
+    </footer>
+`;
+
+function createGameSection(title, imgSrc, developer, releaseDate, story, protagonists, earnings, hardestAchievement, beginnerTips, advancedTips) {
+    return `
+        <div class="game-section">
+            <h3>${title}</h3>
+            <img src="${imgSrc}" alt="${title}">
+            <p><strong>Desarrollado por:</strong> ${developer}</p>
+            <p><strong>Fecha de lanzamiento:</strong> ${releaseDate}</p>
+            <p><strong>Historia Cronológica:</strong> ${story}</p>
+            <p><strong>Protagonistas principales:</strong> ${protagonists.join(", ")}</p>
+            <p><strong>Ganancias:</strong> ${earnings}</p>
+            <p><strong>Logro más complicado:</strong> ${hardestAchievement}</p>
+            <p><strong>Consejos para principiantes:</strong>
+                <ul>${beginnerTips.map(tip => `<li>${tip}</li>`).join("")}</ul>
+            </p>
+            <p><strong>Consejos para jugadores avanzados:</strong>
+                <ul>${advancedTips.map(tip => `<li>${tip}</li>`).join("")}</ul>
+            </p>
+        </div>
+    `;
+}
 
